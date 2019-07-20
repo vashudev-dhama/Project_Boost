@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
+    [SerializeField] float rcsThrust = 100f; // SerializedField allow to change in inspector but not by other scripts ( Public can be change by other scripts as well).
+    [SerializeField] float mainThrust = 100f;
     Rigidbody rigidBody; //to store and access the reference of rigid body
     AudioSource audioSource; //to store and access the reference of audio source
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +32,7 @@ public class Rocket : MonoBehaviour
             {
                 audioSource.Play();
             }
-            rigidBody.AddRelativeForce(Vector3.up); // Apply force relative to rigid body's cordinate system.
+            rigidBody.AddRelativeForce(Vector3.up * mainThrust); // Apply force relative to rigid body's cordinate system.
                                                     //Vector3.up stands for xyz cordinate system with focus on up i.e., y axis.
         }
         else // To stop playing audio if space is not pressed.
@@ -41,14 +44,19 @@ public class Rocket : MonoBehaviour
     private void Rotate()
     {
         rigidBody.freezeRotation = true; // control rotation manually
+
+        
+        float rotationThisFrame = rcsThrust * Time.deltaTime; //longer the frame time larger will be the thrust.
+
         //Right or left rotation can't occur at same time
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.forward); // Rotate transform along z axis i.e., Vector3.forward.
+
+            transform.Rotate(Vector3.forward * rotationThisFrame); // Rotate transform along z axis i.e., Vector3.forward.
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(-Vector3.forward); // Rotate transform along z axis i.e., Vector3.forward in opposite direction.
+            transform.Rotate(-Vector3.forward * rotationThisFrame); // Rotate transform along z axis i.e., Vector3.forward in opposite direction.
         }
         rigidBody.freezeRotation = false; // resume physics control of rotation
     }

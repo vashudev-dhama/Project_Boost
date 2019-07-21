@@ -24,6 +24,24 @@ public class Rocket : MonoBehaviour
         Rotate();
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag) //switch on the basis of tag of the game object, we've collided with.
+        {
+            case "Friendly":
+                // Do nothing
+                print("Ok");
+                break;
+            case "Fuel":
+                print("Fuel");
+                break;
+            default:
+                //kill the player
+                print("Dead");
+                break;
+        }
+    }
+
     private void Thrust()
     {
         if (Input.GetKey(KeyCode.Space)) // Thrusting can occur while rotating too
@@ -33,7 +51,7 @@ public class Rocket : MonoBehaviour
                 audioSource.Play();
             }
             rigidBody.AddRelativeForce(Vector3.up * mainThrust); // Apply force relative to rigid body's cordinate system.
-                                                    //Vector3.up stands for xyz cordinate system with focus on up i.e., y axis.
+                                                                 //Vector3.up stands for xyz cordinate system with focus on up i.e., y axis.
         }
         else // To stop playing audio if space is not pressed.
         {

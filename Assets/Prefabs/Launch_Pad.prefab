@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2329554169376439266}
   - component: {fileID: 1880411017512730884}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Launch_Pad
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6162267656942913790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 5.6574, y: 1, z: 5.144}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: aa9f38df3a58d134c80b9e69a191a4ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

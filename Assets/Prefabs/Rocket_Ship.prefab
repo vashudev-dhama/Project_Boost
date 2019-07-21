@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2792f99f4c5ba8446bec70d1806071e1, type: 2}
+  - {fileID: 2100000, guid: 0a652e60d1f0b9049a262dfe065c03e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,7 +149,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2792f99f4c5ba8446bec70d1806071e1, type: 2}
+  - {fileID: 2100000, guid: 0a652e60d1f0b9049a262dfe065c03e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 4733602887747743536}
   - component: {fileID: 4811411355820379380}
   - component: {fileID: 6740417366122937705}
+  - component: {fileID: 364265775}
   m_Layer: 0
   m_Name: Rocket_Ship
   m_TagString: Untagged
@@ -408,13 +409,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8626090898001145894}
   serializedVersion: 2
-  m_Mass: 0.1
-  m_Drag: 0
+  m_Mass: 1
+  m_Drag: 0.2
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 56
   m_CollisionDetection: 0
 --- !u!82 &6740417366122937705
 AudioSource:
@@ -427,7 +428,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 293e44ac472ec9c4eb4da2ae31c73574, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -512,3 +513,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &364265775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8626090898001145894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8b7b89d28fa4941a7b5e5263cfc621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rcsThrust: 100
+  mainThrust: 15

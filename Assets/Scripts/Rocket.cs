@@ -10,6 +10,9 @@ public class Rocket : MonoBehaviour
     [SerializeField] float mainThrust = 100f;
     Rigidbody rigidBody; //to store and access the reference of rigid body
     AudioSource audioSource; //to store and access the reference of audio source
+
+    enum State {Alive, Dead, Transcending }; // to keep track of current state of player.
+    State state = State.Alive;
     
     // Start is called before the first frame update
     void Start()
@@ -21,12 +24,20 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Thrust();
-        Rotate();
+        if(state == State.Alive) // control during scene switching
+        {
+            Thrust();
+            Rotate();
+        }
+        
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        if(state != State.Alive) // control during scene switching
+        {
+            return;
+        }
         switch (collision.gameObject.tag) //switch on the basis of tag of the game object, we've collided with.
         {
             case "Friendly":
@@ -34,14 +45,25 @@ public class Rocket : MonoBehaviour
                 break;
             case "Finish":
                 //switch the scene
-                print("Hit finish");
-                SceneManager.LoadScene(1);
+                state = State.Transcending;
+                Invoke("LoadNextScreen", 1f); // LoadNextScreen method will invoke after 1 sec.
                 break;
             default:
                 //kill the player
-                SceneManager.LoadScene(0);
+                state = State.Dead;
+                Invoke("LoadFirstScreen", 1f);
                 break;
         }
+    }
+
+    private void LoadFirstScreen()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void LoadNextScreen()
+    {
+        SceneManager.LoadScene(1);
     }
 
     private void Thrust()
@@ -53,19 +75,19 @@ public class Rocket : MonoBehaviour
                 audioSource.Play();
             }
             rigidBody.AddRelativeForce(Vector3.up * mainThrust); // Apply force relative to rigid body's cordinate system.
-                                                                 //Vector3.up stands for xyz cordinate system with focus on up i.e., y axis.
+                                                                    //Vector3.up stands for xyz cordinate system with focus on up i.e., y axis.
         }
         else // To stop playing audio if space is not pressed.
         {
             audioSource.Stop();
         }
+        
     }
 
     private void Rotate()
     {
         rigidBody.freezeRotation = true; // control rotation manually
 
-        
         float rotationThisFrame = rcsThrust * Time.deltaTime; //longer the frame time larger will be the thrust.
 
         //Right or left rotation can't occur at same time
@@ -79,7 +101,8 @@ public class Rocket : MonoBehaviour
             transform.Rotate(-Vector3.forward * rotationThisFrame); // Rotate transform along z axis i.e., Vector3.forward in opposite direction.
         }
         rigidBody.freezeRotation = false; // resume physics control of rotation
+        
     }
-
+            
     
 }

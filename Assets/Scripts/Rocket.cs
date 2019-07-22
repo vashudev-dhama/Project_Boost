@@ -8,6 +8,7 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] float rcsThrust = 100f; // SerializedField allow to change in inspector but not by other scripts ( Public can be change by other scripts as well).
     [SerializeField] float mainThrust = 100f;
+    [SerializeField] float levelLoadDelay = 1f;
 
     [SerializeField] AudioClip mainEngine; // No need to have a default audio clip. And it'll be used to keep track of audio clip to be played.
     [SerializeField] AudioClip success;
@@ -71,7 +72,7 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         successParticle.Play();
         audioSource.PlayOneShot(success);
-        Invoke("LoadNextScreen", 1f); // LoadNextScreen method will invoke after 1 sec.
+        Invoke("LoadNextScreen", levelLoadDelay); // LoadNextScreen method will invoke after levelLoadDelay sec.
     }
 
     private void StartDeathSequence()
@@ -80,7 +81,7 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         deathParticle.Play();
         audioSource.PlayOneShot(death);
-        Invoke("LoadFirstScreen", 1f);
+        Invoke("LoadFirstScreen", levelLoadDelay);
     }
 
     private void LoadFirstScreen()

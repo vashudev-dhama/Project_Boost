@@ -109,8 +109,8 @@ public class Rocket : MonoBehaviour
 
     private void ApplyThrust()
     {
-        rigidBody.AddRelativeForce(Vector3.up * mainThrust); // Apply force relative to rigid body's cordinate system.
-                                                             //Vector3.up stands for xyz cordinate system with focus on up i.e., y axis.
+        rigidBody.AddRelativeForce(Vector3.up * mainThrust ); // Apply force relative to rigid body's cordinate system.
+                                                              //Vector3.up stands for xyz cordinate system with focus on up i.e., y axis.
         if (audioSource.isPlaying == false) // To avoid layering audio play for continuous space key pressing.
         {
             audioSource.PlayOneShot(mainEngine); // To play the clip posses by mainEngine.

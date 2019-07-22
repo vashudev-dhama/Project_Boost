@@ -575,7 +575,7 @@ PrefabInstance:
     - target: {fileID: 3666909843312759194, guid: 36b7b6ff3ca560a49835bbac9bbc48c5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2249994
+      value: 11.9
       objectReference: {fileID: 0}
     - target: {fileID: 3666909843312759194, guid: 36b7b6ff3ca560a49835bbac9bbc48c5,
         type: 3}
@@ -631,6 +631,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 5.4667816
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666909843312759194, guid: 36b7b6ff3ca560a49835bbac9bbc48c5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40.380413
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36b7b6ff3ca560a49835bbac9bbc48c5, type: 3}
@@ -1379,6 +1384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementVector: {x: -19, y: 0, z: 0}
+  period: 2
   movementFactor: 0
 --- !u!4 &1556343993 stripped
 Transform:

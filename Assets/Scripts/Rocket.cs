@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Rocket : MonoBehaviour
 {
     [SerializeField] float rcsThrust = 100f; // SerializedField allow to change in inspector but not by other scripts ( Public can be change by other scripts as well).

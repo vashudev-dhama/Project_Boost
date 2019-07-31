@@ -1305,7 +1305,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2848,12 +2848,12 @@ PrefabInstance:
     - target: {fileID: 6697897061951175582, guid: 954c3ea21699d754dbc75354d9255c90,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.1745283
+      value: 0.36883578
       objectReference: {fileID: 0}
     - target: {fileID: 6697897061951175582, guid: 954c3ea21699d754dbc75354d9255c90,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.5182476
+      value: 0.17647058
       objectReference: {fileID: 0}
     - target: {fileID: 6697897061951175582, guid: 954c3ea21699d754dbc75354d9255c90,
         type: 3}
